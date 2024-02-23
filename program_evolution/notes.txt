@@ -7,7 +7,7 @@ of neurons involved to get exact neuron")
 3. bit 9 = sink type (1 -> goes to internal neuron or 0 -> goes to an output action neuron)
 4. bit 10-16 = sink ID (same as source ID except for sink connections for current neuron)
 5. bit 17-32 = weight float value between -4.0 and 4.0 (divide 2^8 - 1 by 8 or 9 thousand)
-
+# map indices of IDs to certian neurons with each brain having same initial map/config of neurons with a neuron having a unique index for every brain
 
 b -> initial neurons = a set of input sensory neurons, a set of output action neurons, and a 
 set of internal neurons used for strengthening or weakening a "signal"
