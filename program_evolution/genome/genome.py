@@ -5,10 +5,11 @@ import random
 
 class Genome:
 
-    def __init__(self, genome_size=8, genome:list=[], num_bytes_gene=4): # size is number of geners; genome list is actual genes
+    def __init__(self, genome_size=8, genome=[], connections=[], num_bytes_gene=4): # size is number of geners; genome list is actual genes
         self.set_genome_size(genome_size)
         self.set_num_bytes_gene(num_bytes_gene)
         self.set_genome(genome)
+        self.set_connections(connections)
 
     def get_genome_size(self):
         return self.genome_size
@@ -27,6 +28,10 @@ class Genome:
         for _ in range(self.genome_size):
             self.genome.append(secrets.token_hex(self.num_bytes_gene))  # 4 bytes = 8 hex characters
 
+    def set_connections(self, connections:list):
+        """Sets the size of genome."""
+        self.connections = connections
+
     def set_genome_size(self, genome_size):
         """Sets the size of genome."""
         self.genome_size = genome_size
@@ -35,6 +40,9 @@ class Genome:
         self.num_bytes_gene = num
 
     def create_brain(self):
+        """Takes genes iteratively and creates connections between blank/initial neuron map."""
+
+    def form_connections(self):
         """Takes genes iteratively and creates connections between blank/initial neuron map."""
 
     def get_weight(self, i):
