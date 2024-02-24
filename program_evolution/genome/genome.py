@@ -36,14 +36,31 @@ class Genome:
     def create_brain(self):
         """Takes genes iteratively and creates connections between blank/initial neuron map."""
 
-    def get_source_id(self):
-        pass
+    def get_sink_id(self, i):
+        while (i > len(self.genome) - 1):
+            i = input("Your index is too large. Reenter an index: ")
+        return self.from_hex_to_bin(self.genome[i])[16:32]
+
+    def get_sink_id(self, i):
+        while (i > len(self.genome) - 1):
+            i = input("Your index is too large. Reenter an index: ")
+        return self.from_hex_to_bin(self.genome[i])[9:16]
+
+    def get_sink_type(self, i):
+        while (i > len(self.genome) - 1):
+            i = input("Your index is too large. Reenter an index: ")
+        return self.from_hex_to_bin(self.genome[i])[8]
+
+    def get_source_id(self, i):
+        while (i > len(self.genome) - 1):
+            i = input("Your index is too large. Reenter an index: ")
+        return self.from_hex_to_bin(self.genome[i])[1:8]
 
     def get_source_type(self, i) -> int:
         """Returns first bit of any given gene given an input index."""
         while (i > len(self.genome) - 1):
             i = input("Your index is too large. Reenter an index: ")
-        return int(self.from_hex_to_bin(self.genome[i])[0])
+        return self.from_hex_to_bin(self.genome[i])[0]
 
 
     def from_hex_to_bin(self, hex, verbose=False):

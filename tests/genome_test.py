@@ -35,5 +35,15 @@ def test_get_source_type():
     """Takes a binary input and takes it to a hexadecimal."""
     genome = Genome()
     genome.genome[0] = "6b787163"
-    expected = 1
+    expected = "1"
     assert genome.get_source_type(0) == expected
+    assert genome.from_bin_to_hex(genome.get_source_type(0), True) == int(expected)
+
+def test_get_source_id():
+    """Takes a binary input and takes it to a hexadecimal."""
+    genome = Genome()
+    genome.genome[0] = "6b787163"
+    expected = "1010110"
+    expected_decimal = 86
+    assert genome.get_source_id(0) == expected
+    assert genome.from_bin_to_hex(genome.get_source_id(0), True) == expected_decimal
