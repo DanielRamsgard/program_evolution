@@ -52,8 +52,10 @@ class Genome:
             mutation = "0"
         else: 
             mutation = "1"
-        self.genome[i][j] = mutation
-
+        original_bin = self.from_hex_to_bin(self.genome[i])
+        new_bin = (original_bin[:j] + str(mutation) + original_bin[j+1:self.num_bytes_gene*8-1])
+        self.genome[i] = self.from_bin_to_hex(str(new_bin))
+        
     def get_sink_id(self, i):
         """get_sink_id"""
         while (i > len(self.genome) - 1):

@@ -81,3 +81,11 @@ def test_from_hex_to_bin_back_to_hex(): # important test
     genome.genome[0] = "6b787163"
     expected = "6b787163"
     assert genome.from_bin_to_hex((genome.from_hex_to_bin(genome.genome[0]))) == expected
+
+def test_mutation(): # important test
+    """Takes a binary input and takes it to a hexadecimal."""
+    genome = Genome()
+    genome.genome[0] = "6b787163"
+    expected = "1001011011110000111000101100011"
+    genome.mutation()
+    assert genome.from_hex_to_bin(genome.genome[0]) == expected
