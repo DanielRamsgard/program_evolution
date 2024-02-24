@@ -1,5 +1,6 @@
 """Genome class and utility functions."""
 import secrets
+import random
 
 
 class Genome:
@@ -36,22 +37,37 @@ class Genome:
     def create_brain(self):
         """Takes genes iteratively and creates connections between blank/initial neuron map."""
 
-    def get_sink_id(self, i):
+    def get_weight(self, i):
         while (i > len(self.genome) - 1):
             i = input("Your index is too large. Reenter an index: ")
         return self.from_hex_to_bin(self.genome[i])[16:32]
+    
+    def mutation(self):
+        """get the binary string and change a random index to the opposite value."""
+        i = random.randint(0,self.genome_size-1)
+        current_gene = self.from_hex_to_bin(self.genome[i])
+        j = random.randint(0,self.num_bytes_gene*8-1)
+        mutation = current_gene[j]
+        if mutation == "1":
+            mutation = "0"
+        else: 
+            mutation = "1"
+        self.genome[i][j] = mutation
 
     def get_sink_id(self, i):
+        """get_sink_id"""
         while (i > len(self.genome) - 1):
             i = input("Your index is too large. Reenter an index: ")
         return self.from_hex_to_bin(self.genome[i])[9:16]
 
     def get_sink_type(self, i):
+        """get_sink_type"""
         while (i > len(self.genome) - 1):
             i = input("Your index is too large. Reenter an index: ")
         return self.from_hex_to_bin(self.genome[i])[8]
 
     def get_source_id(self, i):
+        """get_source_id"""
         while (i > len(self.genome) - 1):
             i = input("Your index is too large. Reenter an index: ")
         return self.from_hex_to_bin(self.genome[i])[1:8]
